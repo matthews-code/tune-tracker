@@ -13,11 +13,10 @@ const LOCALSTORAGE_VALUES = {
 };
 
 export const logout = () => {
-  // Clear all localStorage items
   for (const property in LOCALSTORAGE_KEYS) {
     window.localStorage.removeItem(LOCALSTORAGE_KEYS[property]);
   }
-  // Navigate to homepage
+
   window.location = window.location.origin;
 };
 
@@ -26,16 +25,16 @@ const refreshToken = async () => {
     // Logout if there's no refresh token stored or we've managed to get into a reload infinite loop
     if (
       !LOCALSTORAGE_VALUES.refreshToken ||
-      LOCALSTORAGE_VALUES.refreshToken === "undefined" ||
-      Date.now() - Number(LOCALSTORAGE_VALUES.timestamp) / 1000 < 1000
+      LOCALSTORAGE_VALUES.refreshToken === "undefined"
     ) {
-      console.error("No refresh token available");
+      console.error("No refresh token available or possible infinite loop");
       logout();
+      return;
     }
 
     // Use `/refresh_token` endpoint from our Node app
-    const { data } = await fetch(
-      `https://api.spotify.com/v1/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`,
+    const res = await fetch(
+      `http://localhost:3000/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -44,6 +43,14 @@ const refreshToken = async () => {
       }
     );
 
+    const data = await res.json();
+
+    if (!data.access_token) {
+      console.error("Failed to refresh token");
+      logout();
+      return;
+    }
+
     // Update localStorage values
     window.localStorage.setItem(
       LOCALSTORAGE_KEYS.accessToken,
@@ -51,10 +58,12 @@ const refreshToken = async () => {
     );
     window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
 
-    // Reload the page for localStorage updates to be reflected
+    // Only reload if the access token was refreshed successfully
+    console.log("Token refreshed successfully, reloading");
     window.location.reload();
   } catch (e) {
     console.error(e);
+    logout();
   }
 };
 
@@ -70,12 +79,12 @@ const hasTokenExpired = () => {
 const getAccessToken = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  console.log(urlParams);
   const queryParams = {
     [LOCALSTORAGE_KEYS.accessToken]: urlParams.get("access_token"),
     [LOCALSTORAGE_KEYS.refreshToken]: urlParams.get("refresh_token"),
     [LOCALSTORAGE_KEYS.expireTime]: urlParams.get("expires_in"),
   };
+
   const hasError = urlParams.get("error");
 
   // If there's an error OR the token in localStorage has expired, refresh the token
@@ -101,9 +110,7 @@ const getAccessToken = () => {
     for (const property in queryParams) {
       window.localStorage.setItem(property, queryParams[property]);
     }
-    // Set timestamp
     window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
-    // Return access token from query params
     return queryParams[LOCALSTORAGE_KEYS.accessToken];
   }
 
@@ -112,3 +119,11 @@ const getAccessToken = () => {
 };
 
 export const accessToken = getAccessToken();
+
+export const getCurrentUserProfile = () =>
+  fetch("https://api.spotify.com/v1/me", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });

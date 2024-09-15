@@ -1,21 +1,18 @@
 require("dotenv").config();
-const { error } = require("console");
 const express = require("express");
 const querystring = require("querystring");
 const { v4: uuidv4 } = require("uuid");
 const app = express();
+const cors = require("cors");
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 
 const PORT = 3000;
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
 const stateKey = "spotify_auth_state";
+
+app.use(cors());
 
 app.get("/login", function (req, res) {
   let state = uuidv4();
@@ -65,7 +62,7 @@ app.get("/callback", function (req, res) {
     .then((response) => {
       if (response.status !== 200)
         return res.redirect(
-          "/" + querystring.stringify({ error: "invalid_token" })
+          "/?" + querystring.stringify({ error: "invalid_token" })
         );
       return response.json();
     })
@@ -104,7 +101,10 @@ app.get("/refresh_token", function (req, res) {
     }),
   })
     .then((response) => {
-      if (response.status !== 200) return res.send(response);
+      if (response.status !== 200)
+        return res.redirect(
+          "/?" + querystring.stringify({ error: "error_refreshing_token" })
+        );
       return response.json();
     })
     .then((data) => {
