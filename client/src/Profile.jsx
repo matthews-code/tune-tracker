@@ -25,14 +25,16 @@ const Profile = () => {
   }, []);
 
   return (
-    <>
+    <section>
       {!token && <a href="http://localhost:3000/login">login</a>}
-      <button onClick={logout}>Logout</button>
+      <button className="bg-slate-500" onClick={logout}>
+        Logout
+      </button>
       <p>
         {profile?.display_name} Followers: {profile?.followers.total}
       </p>
       <img src={profile?.images[0].url} alt="" />
-    </>
+    </section>
   );
 };
 

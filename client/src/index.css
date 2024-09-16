@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-black font-sans text-slate-100;
+  }
+
+  #sidebar > ul > li > a {
+    @apply block h-full w-full py-4 text-sm duration-100 ease-in-out;
+    @apply text-ellipsis;
+  }
+}
