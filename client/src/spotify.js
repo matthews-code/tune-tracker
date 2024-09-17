@@ -40,7 +40,7 @@ const refreshToken = async () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${LOCALSTORAGE_VALUES.accessToken}`,
         },
-      }
+      },
     );
 
     const data = await res.json();
@@ -54,7 +54,7 @@ const refreshToken = async () => {
     // Update localStorage values
     window.localStorage.setItem(
       LOCALSTORAGE_KEYS.accessToken,
-      data.access_token
+      data.access_token,
     );
     window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
 
@@ -122,6 +122,14 @@ export const accessToken = getAccessToken();
 
 export const getCurrentUserProfile = () =>
   fetch("https://api.spotify.com/v1/me", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+export const getUserNumPlaylists = () =>
+  fetch("https://api.spotify.com/v1/me/playlists", {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken}`,

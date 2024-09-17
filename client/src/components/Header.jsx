@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <section
       id="sidebar"
-      className="m-2 flex h-[calc(100vh-16px)] w-[100px] flex-col justify-between rounded-sm bg-[#121212]"
+      className="my-2 ml-2 flex min-h-[calc(100vh-16px)] w-[100px] flex-col justify-between rounded-sm bg-[#121212]"
     >
       <Link to="/">
         <img
@@ -82,7 +82,10 @@ const Header = () => {
         </li>
       </ul>
       <a href="">
-        <IoLogoGithub className="mx-auto mb-4" size={40} />
+        <IoLogoGithub
+          className="mx-auto mb-4 text-[#9b9b9b] duration-100 ease-in-out hover:text-[#509bf5]"
+          size={35}
+        />
       </a>
     </section>
   );
