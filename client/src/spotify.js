@@ -135,3 +135,25 @@ export const getUserNumPlaylists = () =>
       Authorization: `Bearer ${accessToken}`,
     },
   });
+
+export const getTopArtists = () =>
+  fetch(
+    "https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=10",
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    },
+  );
+
+export const getTopTracks = () =>
+  fetch(
+    "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=10",
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    },
+  );

@@ -1,13 +1,17 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
+import HeaderSmall from "./HeaderSmall";
 
 const Layout = () => {
   return (
     <div className="flex">
       <Header />
-      <Outlet />
-      <div className="mb-24" />
+      <HeaderSmall />
+      <div className="w-full pb-24 pt-14 md:pl-[108px]">
+        <Outlet />
+      </div>
+      {/* <div className="mb-26" /> */}
     </div>
   );
 };

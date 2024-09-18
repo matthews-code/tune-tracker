@@ -16,7 +16,7 @@ app.use(cors());
 
 app.get("/login", function (req, res) {
   let state = uuidv4();
-  let scope = "user-read-private user-read-email";
+  let scope = "user-read-private user-read-email user-top-read";
 
   res.cookie(stateKey, state);
 
