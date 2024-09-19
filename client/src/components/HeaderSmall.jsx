@@ -4,7 +4,6 @@ import { FaUserAlt } from "react-icons/fa";
 import { PiMicrophoneStageFill } from "react-icons/pi";
 import { BsMusicNoteBeamed } from "react-icons/bs";
 import { BiSolidPlaylist } from "react-icons/bi";
-import { IoLogoGithub } from "react-icons/io";
 
 const HeaderSmall = () => {
   return (
@@ -17,11 +16,9 @@ const HeaderSmall = () => {
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `border-2 border-[#121212]   ${
-                isActive
-                  ? "border-t-green-400 bg-[#181818] text-white"
-                  : "border-t-[#121212] text-[#9b9b9b] hover:border-t-green-400 hover:bg-[#181818] hover:text-white"
-              }`
+              isActive
+                ? "border-t-2 border-t-green-400 bg-[#181818] text-white"
+                : "border-t-2 border-t-[#121212] text-[#9b9b9b] hover:border-t-green-400 hover:bg-[#181818] hover:text-white"
             }
           >
             <div className="flex w-full flex-col items-center gap-1">
@@ -34,11 +31,9 @@ const HeaderSmall = () => {
           <NavLink
             to="/artists"
             className={({ isActive }) =>
-              `border-2 border-[#121212]   ${
-                isActive
-                  ? "border-t-green-400 bg-[#181818] text-white "
-                  : "border-t-[#121212] text-[#9b9b9b] hover:border-t-green-400 hover:bg-[#181818] hover:text-white"
-              }`
+              isActive
+                ? "border-t-2 border-t-green-400 bg-[#181818] text-white"
+                : "border-t-2 border-t-[#121212] text-[#9b9b9b] hover:border-t-green-400 hover:bg-[#181818] hover:text-white"
             }
           >
             <div className="flex w-full flex-col items-center gap-1">
@@ -51,11 +46,9 @@ const HeaderSmall = () => {
           <NavLink
             to="/tracks"
             className={({ isActive }) =>
-              `border-2 border-[#121212]   ${
-                isActive
-                  ? "border-t-green-400 bg-[#181818] text-white "
-                  : "border-t-[#121212] text-[#9b9b9b] hover:border-t-green-400 hover:bg-[#181818] hover:text-white"
-              }`
+              isActive
+                ? "border-t-2 border-t-green-400 bg-[#181818] text-white"
+                : "border-t-2 border-t-[#121212] text-[#9b9b9b] hover:border-t-green-400 hover:bg-[#181818] hover:text-white"
             }
           >
             <div className="flex w-full flex-col items-center gap-1">
@@ -68,11 +61,9 @@ const HeaderSmall = () => {
           <NavLink
             to="/playlists"
             className={({ isActive }) =>
-              `border-2 border-[#121212]   ${
-                isActive
-                  ? "border-t-green-400 bg-[#181818] text-white "
-                  : "border-t-[#121212] text-[#9b9b9b] hover:border-t-green-400 hover:bg-[#181818] hover:text-white"
-              }`
+              isActive
+                ? "border-t-2 border-t-green-400 bg-[#181818] text-white"
+                : "border-t-2 border-t-[#121212] text-[#9b9b9b] hover:border-t-green-400 hover:bg-[#181818] hover:text-white"
             }
           >
             <div className="flex w-full flex-col items-center gap-1">
