@@ -19,37 +19,45 @@ const Profile = () => {
   const [topTracks, setTopTracks] = useState(null);
 
   useEffect(() => {
-    setToken(accessToken);
+    if (!token) {
+      setToken(accessToken);
+    }
 
     const fetchData = async () => {
-      const profileResponse = await getCurrentUserProfile();
-      const data = await profileResponse.json();
+      const [
+        profileResponse,
+        playlistsResponse,
+        topArtistsResponse,
+        topTracksResponse,
+      ] = await Promise.all([
+        getCurrentUserProfile(),
+        getUserNumPlaylists(),
+        getTopArtists(),
+        getTopTracks(),
+      ]);
 
-      const playlistsResponse = await getUserNumPlaylists();
-      const playlists = await playlistsResponse.json();
+      const [profile, playlists, topArtists, topTracks] = await Promise.all([
+        profileResponse.json(),
+        playlistsResponse.json(),
+        topArtistsResponse.json(),
+        topTracksResponse.json(),
+      ]);
 
-      const topArtistsResponse = await getTopArtists();
-      const topArtists = await topArtistsResponse.json();
-
-      const topTracksResponse = await getTopTracks();
-      const topTracks = await topTracksResponse.json();
-
-      setProfile({ ...data, playlists });
+      setProfile({ ...profile, playlists });
       setTopArtists(topArtists.items);
       setTopTracks(topTracks.items);
-      console.log(topTracks.items);
     };
 
-    if (accessToken) {
+    if (token) {
       const wrappedFetchData = catchErrors(fetchData);
       wrappedFetchData();
     }
-  }, []);
+  }, [token]);
 
   const mapTopArtists = () => {
     if (topArtists) {
       return topArtists.map((artist) => {
-        return <IndivArtist key={artist.id} artist={artist} />;
+        return <IndivArtist key={artist.id} artist={artist} grid={false} />;
       });
     }
   };
