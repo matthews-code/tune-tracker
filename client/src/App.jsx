@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Layout from "./components/Layout";
 import Profile from "./Profile";
 import Artists from "./components/Artists";
+import ArtistPage from "./components/ArtistPage";
 import Tracks from "./components/Tracks";
 import Playlists from "./components/Playlists";
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Profile />} />
           <Route path="artists" element={<Artists />} />
+          <Route path="artists/:id" element={<ArtistPage />} />
           <Route path="tracks" element={<Tracks />} />
           <Route path="playlists" element={<Playlists />} />
         </Route>

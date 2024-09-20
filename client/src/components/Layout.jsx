@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Header from "./Header";
-import HeaderSmall from "./HeaderSmall";
+import Header from "./subcomponents/Header";
+import HeaderSmall from "./subcomponents/HeaderSmall";
 
 const Layout = () => {
   return (

@@ -69,7 +69,7 @@ const Artists = () => {
         timeFrame={timeFrame}
         setTimeFrame={setTimeFrame}
       />
-      <div className="grid w-full grid-cols-[repeat(auto-fit,_minmax(170px,_1fr))] gap-6 md:grid-cols-[repeat(auto-fit,_minmax(210px,_1fr))]">
+      <div className="grid w-full grid-cols-[repeat(auto-fit,_minmax(130px,_1fr))] gap-8 md:grid-cols-[repeat(auto-fit,_minmax(210px,_1fr))]">
         {mapTopArtists()}
       </div>
     </section>

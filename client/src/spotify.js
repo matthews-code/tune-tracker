@@ -147,6 +147,14 @@ export const getTopArtists = (limit = 10, time_range = "long_term") =>
     },
   );
 
+export const getArtist = (id) =>
+  fetch(`https://api.spotify.com/v1/artists/${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
 export const getTopTracks = (limit = 10, time_range = "long_term") =>
   fetch(
     `https://api.spotify.com/v1/me/top/tracks?time_range=${time_range}&limit=${limit}`,
@@ -157,3 +165,11 @@ export const getTopTracks = (limit = 10, time_range = "long_term") =>
       },
     },
   );
+
+export const getPlaylists = () =>
+  fetch(`https://api.spotify.com/v1/me/playlists`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
