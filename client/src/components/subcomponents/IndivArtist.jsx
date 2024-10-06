@@ -14,7 +14,7 @@ const IndivArtist = ({ artist, grid }) => {
     >
       <div className="relative h-[130px] w-[130px] md:h-[210px] md:w-[210px]">
         <AiFillInfoCircle
-          size={72}
+          size={60}
           className={`absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 duration-100 ease-in-out ${
             hover ? "opacity-100" : "opacity-0"
           }`}
@@ -39,7 +39,7 @@ const IndivArtist = ({ artist, grid }) => {
     >
       <div className="relative h-[50px] w-[50px]">
         <AiFillInfoCircle
-          size={32}
+          size={28}
           className={`absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 duration-100 ease-in-out ${
             hover ? "opacity-100" : "opacity-0"
           }`}

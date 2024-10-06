@@ -166,6 +166,22 @@ export const getTopTracks = (limit = 10, time_range = "long_term") =>
     },
   );
 
+export const getTrack = (id) =>
+  Promise.all([
+    fetch(`https://api.spotify.com/v1/tracks/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }),
+    fetch(`https://api.spotify.com/v1/audio-features/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }),
+  ]);
+
 export const getPlaylists = () =>
   fetch(`https://api.spotify.com/v1/me/playlists`, {
     headers: {

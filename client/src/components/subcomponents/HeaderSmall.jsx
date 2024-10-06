@@ -9,7 +9,7 @@ const HeaderSmall = () => {
   return (
     <section
       id="sidebar"
-      className="fixed bottom-0 flex w-screen justify-between rounded-sm bg-[#121212] md:hidden"
+      className="fixed bottom-0 z-10 flex w-screen justify-between rounded-sm bg-[#121212] md:hidden"
     >
       <ul className="flex w-full items-center justify-center">
         <li className="w-full">

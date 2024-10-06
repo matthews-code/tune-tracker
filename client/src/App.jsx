@@ -5,6 +5,7 @@ import Profile from "./Profile";
 import Artists from "./components/Artists";
 import ArtistPage from "./components/ArtistPage";
 import Tracks from "./components/Tracks";
+import TrackPage from "./components/TrackPage";
 import Playlists from "./components/Playlists";
 
 function ScrollToTop() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="artists" element={<Artists />} />
           <Route path="artists/:id" element={<ArtistPage />} />
           <Route path="tracks" element={<Tracks />} />
+          <Route path="tracks/:id" element={<TrackPage />} />
           <Route path="playlists" element={<Playlists />} />
         </Route>
       </Routes>
