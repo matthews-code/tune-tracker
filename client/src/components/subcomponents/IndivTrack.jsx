@@ -5,7 +5,7 @@ import { AiFillInfoCircle } from "react-icons/ai";
 const IndivTrack = ({ track }) => {
   const [hover, setHover] = useState(false);
 
-  function formatDuration(durationMs) {
+  const formatDuration = (durationMs) => {
     const totalSeconds = Math.floor(durationMs / 1000);
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
@@ -13,7 +13,7 @@ const IndivTrack = ({ track }) => {
     const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
 
     return `${minutes}:${formattedSeconds}`;
-  }
+  };
 
   return (
     <Link
