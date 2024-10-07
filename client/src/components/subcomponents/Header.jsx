@@ -5,6 +5,8 @@ import { PiMicrophoneStageFill } from "react-icons/pi";
 import { BsMusicNoteBeamed } from "react-icons/bs";
 import { BiSolidPlaylist } from "react-icons/bi";
 import { IoLogoGithub } from "react-icons/io";
+import { BsStars } from "react-icons/bs";
+import { IoMdMicrophone } from "react-icons/io";
 
 const Header = () => {
   return (
@@ -77,8 +79,8 @@ const Header = () => {
             }
           >
             <div className="flex w-full flex-col items-center gap-1">
-              <BiSolidPlaylist size={18} />
-              <p>Playlists</p>
+              <BsStars size={18} />
+              <p>Discover</p>
             </div>
           </NavLink>
         </li>

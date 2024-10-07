@@ -189,3 +189,108 @@ export const getPlaylists = () =>
       Authorization: `Bearer ${accessToken}`,
     },
   });
+
+export const getSpotRecommendations = async (playlist, maxPopularity) => {
+  // console.log(playlist);
+  // console.log(playlist.tracks.total);
+  // console.log(maxPopularity);
+
+  let randomOffset = null;
+
+  if (playlist.tracks.total > 50) {
+    randomOffset = Math.floor(Math.random() * (playlist.tracks.total - 49));
+  } else {
+    randomOffset = 0;
+  }
+
+  const tracksRes = await fetch(
+    `https://api.spotify.com/v1/playlists/${playlist.id}/tracks?offset=${randomOffset}&limit=50`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    },
+  );
+
+  const trackData = await tracksRes.json();
+
+  // console.log(trackData);
+  const shuffled = [...trackData.items];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  let seedTracks = null;
+
+  if (playlist.tracks.total > 5) {
+    seedTracks = shuffled.slice(0, 5);
+  } else {
+    seedTracks = shuffled;
+  }
+
+  let seedQueryParam = "";
+  seedTracks.forEach((track, index) => {
+    if (index === seedTracks.length - 1) {
+      seedQueryParam += `${track.track.id}`;
+    } else {
+      seedQueryParam += `${track.track.id},`;
+    }
+  });
+
+  return fetch(
+    `https://api.spotify.com/v1/recommendations?seed_tracks=${seedQueryParam}&target_popularity=${maxPopularity}&limit=25`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    },
+  );
+};
+
+export const addSpotPlaylist = async (playlist, tracks) => {
+  const userRes = await getCurrentUserProfile();
+  const userData = await userRes.json();
+
+  // console.log(playlist.name);
+  // console.log(userData.id);
+
+  const createPlaylistRes = await fetch(
+    `https://api.spotify.com/v1/users/${userData.id}/playlists`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        name: `Suggestions based on ${playlist.name}`,
+        description: "Generated Playlist",
+        public: false,
+      }),
+    },
+  );
+
+  const createPlaylistData = await createPlaylistRes.json();
+
+  await fetch(
+    `https://api.spotify.com/v1/playlists/${createPlaylistData.id}/tracks`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        uris: tracks.map((track) => track.uri),
+      }),
+    },
+  );
+
+  // console.log("here");
+
+  return createPlaylistData;
+};

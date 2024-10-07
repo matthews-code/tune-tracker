@@ -1,13 +1,13 @@
 import React from "react";
 
 const IndivPlaylist = ({ playlist }) => {
-  console.log(playlist);
+  // console.log(playlist);
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="h-[140px] w-[140px] md:h-[180px] md:w-[180px]">
+      <div className="h-[120px] w-[120px] md:h-[160px] md:w-[160px]">
         <img
-          src={playlist.images[0].url}
+          src={playlist.images ? playlist.images[0].url : null}
           alt={`Playlist Photo of ${playlist.name}`}
           className="h-full w-full object-cover"
         />

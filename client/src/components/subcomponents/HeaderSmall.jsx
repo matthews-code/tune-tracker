@@ -4,6 +4,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { PiMicrophoneStageFill } from "react-icons/pi";
 import { BsMusicNoteBeamed } from "react-icons/bs";
 import { BiSolidPlaylist } from "react-icons/bi";
+import { BsStars } from "react-icons/bs";
 
 const HeaderSmall = () => {
   return (
@@ -69,7 +70,7 @@ const HeaderSmall = () => {
             }
           >
             <div className="flex w-full flex-col items-center gap-1">
-              <BiSolidPlaylist size={18} />
+              <BsStars size={18} />
               <p>Playlists</p>
             </div>
           </NavLink>
