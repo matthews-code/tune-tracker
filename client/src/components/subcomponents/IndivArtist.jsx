@@ -12,7 +12,7 @@ const IndivArtist = ({ artist, grid }) => {
       to={`/artists/${artist.id}`}
       className="flex flex-col items-center gap-4"
     >
-      <div className="relative h-[130px] w-[130px] md:h-[210px] md:w-[210px]">
+      <div className="relative h-[130px] w-[130px] md:h-[180px] md:w-[180px]">
         <AiFillInfoCircle
           size={60}
           className={`absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 duration-100 ease-in-out ${

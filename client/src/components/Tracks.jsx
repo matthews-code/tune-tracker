@@ -63,7 +63,7 @@ const Tracks = () => {
   };
 
   return (
-    <section className="mx-auto flex w-[88%] max-w-[1240px] flex-col items-center gap-10">
+    <section className="mx-auto flex w-[75%] max-w-[1240px] flex-col items-center gap-10">
       <TimeFrameHeader
         title="Tracks"
         timeFrame={timeFrame}

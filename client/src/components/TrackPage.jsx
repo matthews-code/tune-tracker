@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { catchErrors } from "../utils";
 import { getTrack, accessToken } from "../spotify";
+import BarChart from "./subcomponents/BarChart";
 
 const pitchClassMap = {
   0: "C",
@@ -62,17 +63,17 @@ const TrackPage = () => {
   return (
     token &&
     track && (
-      <>
-        <section className="mx-auto flex w-[88%] max-w-[1240px] flex-col items-center">
+      <section className="min-h-full flex flex-col ">
+        <div className="mx-auto flex w-[75%] max-w-[1240px] flex-col items-center">
           <div className="flex w-full flex-col items-center gap-8 md:flex-row">
-            <div className="h-[180px] min-w-[180px] max-w-[180px] md:h-[260px] md:w-[260px] md:min-w-[260px]">
+            <div className="h-[180px] min-w-[180px] max-w-[180px] md:h-[225px] md:w-[260px] md:min-w-[225px]">
               <img
                 src={track.trackData.album.images[0].url}
                 alt={`Album Cover for ${track.trackData.name}`}
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="flex grow flex-col gap-2 text-center md:text-left">
+            <div className="flex grow flex-col gap-1 text-center md:text-left">
               <h1 className="text-3xl font-bold">{track.trackData.name}</h1>
               <h2 className="text-xl font-bold text-[#b3b3b3]">
                 {track.trackData.artists[0].name}
@@ -85,14 +86,14 @@ const TrackPage = () => {
               <a
                 href={track.trackData.external_urls.spotify}
                 target="_blank"
-                className="m-auto mt-5 w-fit rounded-full bg-[#1db954] px-6 py-2 text-sm font-bold text-white md:mx-0"
+                className="m-auto mt-5 w-fit rounded-full bg-[#1db954] hover:bg-[#4ac173] duration-100 ease-in-out px-6 py-2 text-sm font-bold text-white md:mx-0"
               >
                 PLAY ON SPOTIFY
               </a>
             </div>
           </div>
-        </section>
-        <section className="mx-auto mt-24 grid w-[88%] max-w-[850px] grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-20">
+        </div>
+        <div className="mx-auto mt-16 grid w-[75%] max-w-[850px] grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-20">
           <div className="flex flex-col text-center">
             <p className="mb-1 text-2xl font-bold">
               {formatDuration(track.trackData.duration_ms)}
@@ -117,8 +118,11 @@ const TrackPage = () => {
             </p>
             <p className="text-[#b3b3b3]">Tempo (BPM)</p>
           </div>
-        </section>
-      </>
+        </div>
+        <div className="mx-auto flex-1 mt-16 grid w-[75%] max-w-[1240px]">
+          <BarChart features={track.trackAudioFeatures} />
+        </div>
+      </section>
     )
   );
 };

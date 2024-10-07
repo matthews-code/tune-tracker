@@ -33,11 +33,11 @@ const Playlists = () => {
   };
 
   return (
-    <section className="mx-auto flex w-[88%] max-w-[1240px] flex-col items-center gap-10">
+    <section className="mx-auto flex w-[75%] max-w-[1240px] flex-col items-center gap-10">
       <div className="w-full">
         <h1 className="text-2xl font-black">Your Playlists</h1>
       </div>
-      <div className="grid w-full grid-cols-[repeat(auto-fit,_minmax(140px,_1fr))] gap-8 md:grid-cols-[repeat(auto-fit,_minmax(220px,_1fr))]">
+      <div className="grid w-full grid-cols-[repeat(auto-fit,_minmax(140px,_1fr))] gap-8 md:grid-cols-[repeat(auto-fit,_minmax(180px,_1fr))]">
         {mapPlaylists()}
       </div>
     </section>

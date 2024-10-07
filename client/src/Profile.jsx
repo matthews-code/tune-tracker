@@ -72,7 +72,7 @@ const Profile = () => {
 
   return (
     <>
-      <section className="mx-auto flex w-[88%] max-w-[1240px] flex-col items-center">
+      <section className="mx-auto flex w-[75%] max-w-[1240px] flex-col items-center">
         {!token && <a href="http://localhost:3000/login">login</a>}
         <div className="h-[130px] w-[130px]">
           <img
@@ -113,7 +113,7 @@ const Profile = () => {
           LOGOUT
         </button>
       </section>
-      <section className="mx-auto mt-24 grid w-[88%] max-w-[1240px] gap-20 md:grid-cols-2">
+      <section className="mx-auto mt-24 grid w-[75%] max-w-[1240px] gap-20 md:grid-cols-2">
         <div>
           <div className="flex items-center justify-between gap-2">
             <h2 className="text-lg font-black">Top Artists of All Time</h2>
