@@ -21,6 +21,7 @@ const Playlists = () => {
   const [latestSearchedPlaylist, setLatestSearchedPlaylist] =
     React.useState(null);
   const [createdPlaylist, setCreatedPlaylist] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
 
   useEffect(() => {
     if (!token) {
@@ -42,6 +43,7 @@ const Playlists = () => {
 
   const getRecommendations = () => {
     const fetchData = async () => {
+      setLoading(true);
       const recommendedResponse = await getSpotRecommendations(
         selectedPlaylist,
         popularity,
@@ -49,6 +51,7 @@ const Playlists = () => {
       const recommendedData = await recommendedResponse.json();
 
       setRecommendations(recommendedData.tracks);
+      setLoading(false);
     };
 
     if (selectedPlaylist) {
@@ -139,14 +142,15 @@ const Playlists = () => {
           <span>100%</span>
         </div>
         <button
-          className="mx-auto mt-8 block rounded-full bg-[#1db954] px-6 py-2 text-sm font-bold text-white duration-100 ease-in-out hover:bg-[#1ed760] disabled:bg-[#1ed75f5c] disabled:text-[#ababab99] xs:mt-14"
+          className="mx-auto mt-8 block w-48 rounded-full bg-[#1db954] px-6 py-2 text-sm font-bold text-white duration-100 ease-in-out hover:bg-[#1ed760] disabled:bg-[#1ed75f5c] disabled:text-[#ababab99] xs:mt-14"
           disabled={
             !selectedPlaylist ||
-            (selectedPlaylist && selectedPlaylist.tracks.total < 1)
+            (selectedPlaylist && selectedPlaylist.tracks.total < 1) ||
+            loading
           }
           onClick={getRecommendations}
         >
-          DISCOVER MUSIC
+          {loading ? "LOADING..." : "DISCOVER MUSIC"}
         </button>
       </div>{" "}
       {recommendations && (
