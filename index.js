@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const path = require("path");
 const querystring = require("querystring");
 const { v4: uuidv4 } = require("uuid");
 const app = express();
@@ -8,6 +9,7 @@ const cors = require("cors");
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
+const FRONTEND_URI = process.env.FRONTEND_URI;
 
 const PORT = 3000;
 const stateKey = "spotify_auth_state";
@@ -79,7 +81,7 @@ app.get("/callback", function (req, res) {
         expires_in,
       });
 
-      res.redirect(`http://localhost:5173?${queryParams}`);
+      res.redirect(`${FRONTEND_URI}?${queryParams}`);
     })
     .catch((error) => {
       res.status(500).send(error);
