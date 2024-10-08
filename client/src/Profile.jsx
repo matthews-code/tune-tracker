@@ -73,10 +73,13 @@ const Profile = () => {
   return (
     <>
       <section className="mx-auto flex w-[75%] max-w-[1240px] flex-col items-center">
-        {!token && <a href="http://localhost:3000/login">login</a>}
+        {/* {!token && <a href="http://localhost:3000/login">login</a>} */}
         <div className="h-[130px] w-[130px]">
           <img
-            src={profile?.images[1].url}
+            src={
+              profile?.images[1].url ||
+              "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg"
+            }
             alt={`Profile Image of ${profile?.display_name}`}
             className="h-full rounded-full object-cover"
           />
@@ -84,14 +87,16 @@ const Profile = () => {
         <a
           href={profile?.external_urls.spotify}
           target="_blank"
-          className="pt-6 text-4xl font-bold duration-100 ease-in-out hover:text-[#1ed760]"
+          className="pt-4 text-4xl font-bold duration-100 ease-in-out hover:text-[#1ed760]"
         >
-          <h1 className="text-center">{profile?.display_name}</h1>
+          <h1 className="text-center">
+            {profile?.display_name || "Spotify User"}
+          </h1>
         </a>
         <div className="mt-3 flex items-center gap-8">
           <div className="">
             <p className="text-center text-lg font-bold text-[#1ed760]">
-              {profile?.followers.total}
+              {profile?.followers.total || 0}
             </p>
             <p className="mt-1 text-xs font-semibold text-[#9b9b9b]">
               FOLLOWERS
@@ -99,21 +104,31 @@ const Profile = () => {
           </div>
           <div>
             <p className="text-center text-lg font-bold text-[#1ed760]">
-              {profile?.playlists.total}
+              {profile?.playlists.total || 0}
             </p>
             <p className="mt-1 text-xs font-semibold text-[#9b9b9b]">
               PLAYLISTS
             </p>
           </div>
         </div>
-        <button
-          className="mt-8 rounded-full border border-white px-6 py-2.5 text-xs font-bold text-white duration-100 ease-in-out hover:bg-white hover:text-black"
-          onClick={logout}
-        >
-          LOGOUT
-        </button>
+        {token && (
+          <button
+            className="mt-8 w-28 rounded-full border border-white px-6 py-2.5 text-xs font-bold text-white duration-100 ease-in-out hover:bg-white hover:text-black"
+            onClick={logout}
+          >
+            LOGOUT
+          </button>
+        )}
+        {!token && (
+          <a
+            className="mt-8 w-28 rounded-full border border-white px-6 py-2.5 text-center text-xs font-bold text-white duration-100 ease-in-out hover:bg-white hover:text-black"
+            href="http://localhost:3000/login"
+          >
+            LOGIN
+          </a>
+        )}
       </section>
-      <section className="mx-auto mt-24 grid w-[75%] max-w-[1240px] gap-20 md:grid-cols-2">
+      <section className="mx-auto mt-20 grid w-[75%] max-w-[1240px] gap-20 md:grid-cols-2">
         <div>
           <div className="flex items-center justify-between gap-2">
             <h2 className="text-lg font-black">Top Artists of All Time</h2>

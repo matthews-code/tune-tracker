@@ -1,12 +1,10 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
-import { PiMicrophoneStageFill } from "react-icons/pi";
 import { BsMusicNoteBeamed } from "react-icons/bs";
-import { BiSolidPlaylist } from "react-icons/bi";
 import { IoLogoGithub } from "react-icons/io";
 import { BsStars } from "react-icons/bs";
-import { IoMdMicrophone } from "react-icons/io";
+import { FaMicrophoneLines } from "react-icons/fa6";
 
 const Header = () => {
   return (
@@ -48,7 +46,7 @@ const Header = () => {
             }
           >
             <div className="flex w-full flex-col items-center gap-1">
-              <PiMicrophoneStageFill size={18} />
+              <FaMicrophoneLines size={18} />
               <p>Top Artists</p>
             </div>
           </NavLink>
