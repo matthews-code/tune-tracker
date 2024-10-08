@@ -63,13 +63,13 @@ const Artists = () => {
   };
 
   return (
-    <section className="mx-auto flex w-[75%] max-w-[1240px] flex-col items-center gap-10">
+    <section className="mx-auto flex w-[90%] max-w-[1240px] flex-col items-center gap-10 xs:w-[75%]">
       <TimeFrameHeader
         title="Artists"
         timeFrame={timeFrame}
         setTimeFrame={setTimeFrame}
       />
-      <div className="grid w-full grid-cols-[repeat(auto-fit,_minmax(140px,_1fr))] gap-8 md:grid-cols-[repeat(auto-fit,_minmax(190px,_1fr))]">
+      <div className="grid w-full grid-cols-[repeat(auto-fit,_minmax(110px,_1fr))] gap-4 xs:grid-cols-[repeat(auto-fit,_minmax(140px,_1fr))] xs:gap-8 md:grid-cols-[repeat(auto-fit,_minmax(190px,_1fr))]">
         {mapTopArtists()}
       </div>
     </section>

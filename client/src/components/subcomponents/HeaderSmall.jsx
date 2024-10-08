@@ -8,8 +8,8 @@ import { FaMicrophoneLines } from "react-icons/fa6";
 const HeaderSmall = () => {
   return (
     <section
-      id="sidebar"
-      className="fixed bottom-0 z-10 flex w-screen justify-between rounded-sm bg-[#121212] md:hidden"
+      // id="sidebar"
+      className="sidebar fixed bottom-0 z-10 flex w-screen justify-between rounded-sm bg-[#121212] md:hidden"
     >
       <ul className="flex w-full items-center justify-center">
         <li className="w-full">
@@ -22,7 +22,7 @@ const HeaderSmall = () => {
             }
           >
             <div className="flex w-full flex-col items-center gap-1">
-              <FaUserAlt size={18} />
+              <FaUserAlt size={15} />
               <p>Profile</p>
             </div>
           </NavLink>
@@ -38,7 +38,7 @@ const HeaderSmall = () => {
             }
           >
             <div className="flex w-full flex-col items-center gap-1">
-              <FaMicrophoneLines size={18} />
+              <FaMicrophoneLines size={15} />
               <p>Top Artists</p>
             </div>
           </NavLink>
@@ -54,7 +54,7 @@ const HeaderSmall = () => {
             }
           >
             <div className="flex w-full flex-col items-center gap-1">
-              <BsMusicNoteBeamed size={18} />
+              <BsMusicNoteBeamed size={15} />
               <p>Top Tracks</p>
             </div>
           </NavLink>
@@ -69,7 +69,7 @@ const HeaderSmall = () => {
             }
           >
             <div className="flex w-full flex-col items-center gap-1">
-              <BsStars size={18} />
+              <BsStars size={15} />
               <p>Playlists</p>
             </div>
           </NavLink>

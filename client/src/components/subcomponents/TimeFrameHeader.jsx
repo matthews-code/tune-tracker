@@ -3,8 +3,8 @@ import React from "react";
 const TimeFrameHeader = ({ title, timeFrame, setTimeFrame }) => {
   return (
     <div className="flex w-full flex-col justify-between gap-3 md:flex-row">
-      <h1 className="text-2xl font-black">Top {title}</h1>
-      <div className="flex items-center gap-6 font-semibold">
+      <h1 className="text-lg font-black xs:text-2xl">Top {title}</h1>
+      <div className="flex items-center gap-6 text-sm font-semibold xs:text-base">
         <p
           className={
             timeFrame === "all_time"

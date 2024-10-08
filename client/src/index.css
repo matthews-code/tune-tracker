@@ -9,7 +9,7 @@
     @apply bg-[#0b0b0b] font-sans text-slate-100;
   }
 
-  #sidebar > ul > li > a {
-    @apply block h-full w-full py-4 text-xs duration-100 ease-in-out;
+  .sidebar > ul > li > a {
+    @apply block h-full w-full py-3 text-xs duration-100 ease-in-out xs:py-4;
   }
 }

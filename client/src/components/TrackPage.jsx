@@ -63,10 +63,10 @@ const TrackPage = () => {
   return (
     token &&
     track && (
-      <section className="flex min-h-full flex-col ">
-        <div className="mx-auto flex w-[75%] max-w-[1240px] flex-col items-center">
-          <div className="flex w-full flex-col items-center gap-8 md:flex-row">
-            <div className="h-[180px] min-w-[180px] max-w-[180px] md:h-[225px] md:w-[260px] md:min-w-[225px]">
+      <section className="mb-14 flex min-h-full flex-col md:mb-0">
+        <div className="mx-auto flex w-[90%] max-w-[1240px] flex-col items-center xs:w-[75%]">
+          <div className="flex w-full flex-col items-center gap-4 xs:gap-8 md:flex-row">
+            <div className="h-[140px] min-w-[140px] max-w-[180px] xs:h-[180px] xs:min-w-[180px] md:h-[225px] md:w-[260px] md:min-w-[225px]">
               <img
                 src={track.trackData.album.images[0].url}
                 alt={`Album Cover for ${track.trackData.name}`}
@@ -74,57 +74,59 @@ const TrackPage = () => {
               />
             </div>
             <div className="flex grow flex-col gap-1 text-center md:text-left">
-              <h1 className="text-3xl font-bold">{track.trackData.name}</h1>
-              <h2 className="text-xl font-bold text-[#919191]">
+              <h1 className="text-xl font-bold xs:text-3xl">
+                {track.trackData.name}
+              </h1>
+              <h2 className="text-base font-bold text-[#919191] xs:text-xl">
                 {track.trackData.artists[0].name}
               </h2>
               <h3 className="text-[#919191]">
                 {track.trackData.album.name}{" "}
-                <span className=" text-xl">&nbsp;&#183;&nbsp;</span>{" "}
+                <span className="text-base">&nbsp;&#183;&nbsp;</span>{" "}
                 {track.trackData.album.release_date.split("-")[0]}
               </h3>
               <a
                 href={track.trackData.external_urls.spotify}
                 target="_blank"
-                className="m-auto mt-5 w-fit rounded-full bg-[#1db954] px-6 py-2 text-sm font-bold text-white duration-100 ease-in-out hover:bg-[#1ed760] md:mx-0"
+                className="m-auto mt-2 w-fit rounded-full bg-[#1db954] px-6 py-2 text-xs font-bold text-white duration-100 ease-in-out hover:bg-[#1ed760] xs:mt-5 xs:text-sm md:mx-0"
               >
                 PLAY ON SPOTIFY
               </a>
             </div>
           </div>
         </div>
-        <div className="mx-auto mt-16 grid w-[75%] max-w-[700px] grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-10 md:gap-16">
+        <div className="mx-auto mt-8 grid w-[75%] max-w-[700px] grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-6 xs:mt-16 xs:gap-10 md:gap-16">
           <div className="flex flex-col text-center">
-            <p className="mb-1 text-2xl font-bold">
+            <p className="mb-1 text-lg font-bold xs:text-2xl">
               {formatDuration(track.trackData.duration_ms)}
             </p>
-            <p className="text-[#919191]">Duration</p>
+            <p className="text-sm text-[#919191]">Duration</p>
           </div>
           <div className="flex flex-col text-center">
-            <p className="mb-1 text-2xl font-bold">
+            <p className="mb-1 text-lg font-bold xs:text-2xl">
               {track.trackData.popularity}%
             </p>
-            <p className="text-[#919191]">Popularity</p>
+            <p className="text-sm text-[#919191]">Popularity</p>
           </div>
           <div className="flex flex-col text-center">
-            <p className="mb-1 text-2xl font-bold">{`${
+            <p className="mb-1 text-lg font-bold xs:text-2xl">{`${
               pitchClassMap[track.trackAudioFeatures.key]
             } ${track.trackAudioFeatures.mode ? "Major" : "Minor"}`}</p>
-            <p className="text-[#919191]">Key</p>
+            <p className="text-sm text-[#919191]">Key</p>
           </div>
           <div className="flex flex-col text-center">
-            <p className="mb-1 text-2xl font-bold">
+            <p className="mb-1 text-lg font-bold xs:text-2xl">
               {Number(track.trackAudioFeatures.tempo).toFixed(0)}
             </p>
-            <p className="text-[#919191]">Tempo (BPM)</p>
+            <p className="text-sm text-[#919191]">Tempo (BPM)</p>
           </div>
         </div>
-        <div className="mx-auto mt-16 grid h-72 w-[75%] max-w-[1240px]">
+        <div className="mx-auto mt-8 grid h-72 w-[75%] max-w-[1240px] xs:mt-16">
           <BarChart features={track.trackAudioFeatures} />
           <a
             href="https://developer.spotify.com/documentation/web-api/reference/get-audio-features"
             target="_blank"
-            className="mt-10 text-center text-[#919191] duration-100 ease-in-out hover:text-white hover:underline"
+            className="mt-10 text-center text-xs text-[#919191] duration-100 ease-in-out hover:text-white hover:underline xs:text-base"
           >
             Full Description of Audio Features
           </a>

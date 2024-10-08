@@ -10,9 +10,9 @@ const IndivArtist = ({ artist, grid }) => {
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       to={`/artists/${artist.id}`}
-      className="flex flex-col items-center gap-4"
+      className="flex flex-col items-center gap-2 xs:gap-4"
     >
-      <div className="relative h-[130px] w-[130px] md:h-[180px] md:w-[180px]">
+      <div className="relative h-[100px] w-[100px] xs:h-[130px] xs:w-[130px] md:h-[180px] md:w-[180px]">
         <AiFillInfoCircle
           size={60}
           className={`absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 duration-100 ease-in-out ${
@@ -27,7 +27,9 @@ const IndivArtist = ({ artist, grid }) => {
           }`}
         />
       </div>
-      <p className="pb-4 text-center text-lg font-bold">{artist.name}</p>
+      <p className="pb-4 text-center text-sm font-bold xs:text-lg">
+        {artist.name}
+      </p>
     </Link>
   ) : (
     // <div className="flex gap-4 hover:cursor-pointer">

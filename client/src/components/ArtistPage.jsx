@@ -30,7 +30,7 @@ const ArtistPage = () => {
     token &&
     artist && (
       <div className="flex h-[calc(100vh-152px)] flex-col items-center justify-center text-center">
-        <div className="h-[180px] w-[180px] md:h-[220px] md:w-[220px]">
+        <div className="h-[140px] w-[140px] xs:h-[180px] xs:w-[180px] md:h-[220px] md:w-[220px]">
           <img
             src={artist.images[0].url}
             alt={`Spotify Photo of ${artist.name}`}

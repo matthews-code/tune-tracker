@@ -20,7 +20,7 @@ const IndivTrack = ({ track }) => {
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       to={`/tracks/${track.id}`}
-      className="flex gap-4"
+      className="flex gap-3"
     >
       <div className="relative h-[50px] w-[50px]">
         <AiFillInfoCircle

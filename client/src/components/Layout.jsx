@@ -8,7 +8,7 @@ const Layout = () => {
     <div className="flex">
       <Header />
       <HeaderSmall />
-      <div className="min-h-screen w-full pb-24 md:pb-16 pt-14 md:pl-[108px]">
+      <div className="md:pb-16 md:pl-[108px] min-h-screen w-full pb-24 pt-8 xs:pt-14">
         <Outlet />
       </div>
       {/* <div className="mb-26" /> */}

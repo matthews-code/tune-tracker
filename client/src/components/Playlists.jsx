@@ -104,9 +104,9 @@ const Playlists = () => {
   // console.log(selectedPlaylist);
 
   return (
-    <section className="mx-auto flex w-[75%] max-w-[1240px] flex-col items-center gap-10">
+    <section className="mx-auto flex w-[90%] max-w-[1240px] flex-col items-center gap-6 xs:w-[75%] xs:gap-10">
       <div className="w-full">
-        <h1 className="text-2xl font-black">Select Base Playlist</h1>
+        <h1 className="text-lg font-black xs:text-2xl">Select Base Playlist</h1>
       </div>
       <div
         onMouseEnter={() =>
@@ -115,12 +115,12 @@ const Playlists = () => {
         onMouseLeave={() =>
           selectedPlaylist === null && setFeaturedHoveredComponent(null)
         }
-        className="grid w-full grid-cols-[repeat(auto-fit,_minmax(140px,_1fr))] gap-8 md:grid-cols-[repeat(auto-fit,_minmax(190px,_1fr))]"
+        className="grid w-full grid-cols-[repeat(auto-fit,_minmax(140px,_1fr))] gap-5 xs:gap-8 md:grid-cols-[repeat(auto-fit,_minmax(190px,_1fr))]"
       >
         {mapPlaylists()}
       </div>
       <div className="w-full">
-        <h1 className="text-2xl font-black">Select Popularity</h1>
+        <h1 className="text-lg font-black xs:text-2xl">Select Popularity</h1>
       </div>
       <div className="w-full">
         <input
@@ -139,7 +139,7 @@ const Playlists = () => {
           <span>100%</span>
         </div>
         <button
-          className="mx-auto mt-14 block rounded-full bg-[#1db954] px-6 py-2 text-sm font-bold text-white duration-100 ease-in-out hover:bg-[#1ed760] disabled:bg-[#1ed75f5c] disabled:text-[#ababab99]"
+          className="mx-auto mt-8 block rounded-full bg-[#1db954] px-6 py-2 text-sm font-bold text-white duration-100 ease-in-out hover:bg-[#1ed760] disabled:bg-[#1ed75f5c] disabled:text-[#ababab99] xs:mt-14"
           disabled={
             !selectedPlaylist ||
             (selectedPlaylist && selectedPlaylist.tracks.total < 1)
@@ -152,7 +152,7 @@ const Playlists = () => {
       {recommendations && (
         <div className="mt-4 flex w-full flex-col gap-6">
           <div className="flex w-full flex-col justify-between gap-3 sm:flex-row">
-            <h1 className="text-2xl font-black">
+            <h1 className="text-lg font-black xs:text-2xl">
               Suggestions based on {latestSearchedPlaylist.name}
             </h1>
             {createdPlaylist ? (

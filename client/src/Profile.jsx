@@ -72,8 +72,8 @@ const Profile = () => {
 
   return (
     <>
-      <section className="mx-auto flex w-[75%] max-w-[1240px] flex-col items-center">
-        <div className="h-[130px] w-[130px]">
+      <section className="mx-auto flex w-[90%] max-w-[1240px] flex-col items-center xs:w-[75%]">
+        <div className="h-[100px] w-[100px] xs:h-[130px] xs:w-[130px]">
           <img
             src={
               profile?.images[1].url ||
@@ -86,15 +86,15 @@ const Profile = () => {
         <a
           href={profile?.external_urls.spotify}
           target="_blank"
-          className="pt-4 text-4xl font-bold duration-100 ease-in-out hover:text-[#1ed760]"
+          className="pt-4 text-2xl font-bold duration-100 ease-in-out hover:text-[#1ed760] xs:text-4xl"
         >
           <h1 className="text-center">
             {profile?.display_name || "Spotify User"}
           </h1>
         </a>
         <div className="mt-3 flex items-center gap-8">
-          <div className="">
-            <p className="text-center text-lg font-bold text-[#1ed760]">
+          <div>
+            <p className="text-center text-base font-bold text-[#1ed760] xs:text-lg">
               {profile?.followers.total || 0}
             </p>
             <p className="mt-1 text-xs font-semibold text-[#9b9b9b]">
@@ -102,7 +102,7 @@ const Profile = () => {
             </p>
           </div>
           <div>
-            <p className="text-center text-lg font-bold text-[#1ed760]">
+            <p className="text-center text-base font-bold text-[#1ed760] xs:text-lg">
               {profile?.playlists.total || 0}
             </p>
             <p className="mt-1 text-xs font-semibold text-[#9b9b9b]">
@@ -112,7 +112,7 @@ const Profile = () => {
         </div>
         {token && (
           <button
-            className="mt-8 w-28 rounded-full border border-white px-6 py-2.5 text-xs font-bold text-white duration-100 ease-in-out hover:bg-white hover:text-black"
+            className="mt-5 w-28 rounded-full border border-white px-6 py-2.5 text-xs font-bold text-white duration-100 ease-in-out hover:bg-white hover:text-black xs:mt-8"
             onClick={logout}
           >
             LOGOUT
@@ -120,37 +120,41 @@ const Profile = () => {
         )}
         {!token && (
           <a
-            className="mt-8 w-28 rounded-full border border-white px-6 py-2.5 text-center text-xs font-bold text-white duration-100 ease-in-out hover:bg-white hover:text-black"
-            href={`https://spotify-profile-7s0h.onrender.com/login`}
+            className="mt-5 w-28 rounded-full border border-white px-6 py-2.5 text-center text-xs font-bold text-white duration-100 ease-in-out hover:bg-white hover:text-black xs:mt-8"
+            href={`${import.meta.env.VITE_FRONTEND_URI}/login`}
           >
             LOGIN
           </a>
         )}
       </section>
-      <section className="mx-auto mt-20 grid w-[75%] max-w-[1240px] gap-20 md:grid-cols-2">
+      <section className="md:grid-cols-2 mx-auto mt-12 grid w-[90%] max-w-[1240px] grid-cols-1 gap-10 xs:mt-20 xs:w-[75%]">
         <div>
-          <div className="flex items-center justify-between gap-2">
-            <h2 className="text-lg font-black">Top Artists of All Time</h2>
+          <div className="sm:flex-row flex flex-col justify-between gap-2">
+            <h2 className="text-base font-black xs:text-lg">
+              Top Artists of All Time
+            </h2>
             <Link
               to={"/artists"}
-              className="whitespace-nowrap rounded-full border border-white px-6 py-2.5 text-xs font-bold text-white duration-100 ease-in-out hover:bg-white hover:text-black"
+              className="h-fit whitespace-nowrap rounded-full border border-white px-6 py-2.5 text-center text-xs font-bold text-white duration-100 ease-in-out hover:bg-white hover:text-black"
             >
               SEE MORE
             </Link>
           </div>
-          <div className="mt-8 flex flex-col gap-6">{mapTopArtists()}</div>
+          <div className="mt-6 flex flex-col gap-6">{mapTopArtists()}</div>
         </div>
         <div>
-          <div className="flex items-center justify-between gap-2">
-            <h2 className="text-lg font-black">Top Tracks of All Time</h2>
+          <div className="sm:flex-row flex flex-col justify-between gap-2">
+            <h2 className="text-base font-black xs:text-lg">
+              Top Tracks of All Time
+            </h2>
             <Link
               to={"/tracks"}
-              className="whitespace-nowrap rounded-full border border-white px-6 py-2.5 text-xs font-bold text-white duration-100 ease-in-out hover:bg-white hover:text-black"
+              className="h-fit whitespace-nowrap rounded-full border border-white px-6 py-2.5 text-center text-xs font-bold text-white duration-100 ease-in-out hover:bg-white hover:text-black"
             >
               SEE MORE
             </Link>
           </div>
-          <div className="mt-8 flex flex-col gap-6">{mapTopTracks()}</div>
+          <div className="mt-6 flex flex-col gap-6">{mapTopTracks()}</div>
         </div>
       </section>
     </>

@@ -9,8 +9,8 @@ import { FaMicrophoneLines } from "react-icons/fa6";
 const Header = () => {
   return (
     <section
-      id="sidebar"
-      className="fixed my-2 ml-2 hidden h-[calc(100vh-16px)] w-[100px] flex-col justify-between gap-8 rounded-sm bg-[#121212] md:flex"
+      // id="sidebar"
+      className="sidebar fixed my-2 ml-2 hidden h-[calc(100vh-16px)] w-[100px] flex-col justify-between gap-8 rounded-sm bg-[#121212] md:flex"
     >
       <Link to="/">
         <img
