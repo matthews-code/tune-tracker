@@ -66,7 +66,7 @@ const TrackPage = () => {
       <section className="mb-14 flex min-h-full flex-col md:mb-0">
         <div className="mx-auto flex w-[90%] max-w-[1240px] flex-col items-center xs:w-[75%]">
           <div className="flex w-full flex-col items-center gap-4 xs:gap-8 md:flex-row">
-            <div className="h-[140px] min-w-[140px] max-w-[180px] xs:h-[180px] xs:min-w-[180px] md:h-[225px] md:w-[260px] md:min-w-[225px]">
+            <div className="h-[140px] w-[140px] xs:h-[180px] xs:w-[180px] md:h-[225px] md:w-[225px]">
               <img
                 src={track.trackData.album.images[0].url}
                 alt={`Album Cover for ${track.trackData.name}`}
@@ -95,7 +95,7 @@ const TrackPage = () => {
             </div>
           </div>
         </div>
-        <div className="mx-auto mt-8 grid w-[75%] max-w-[700px] grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-6 xs:mt-16 xs:gap-10 md:gap-16">
+        <div className="mx-auto mt-10 grid w-[90%] max-w-[700px] grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] gap-6 xs:mt-16 xs:w-[75%] xs:gap-10 md:gap-16">
           <div className="flex flex-col text-center">
             <p className="mb-1 text-lg font-bold xs:text-2xl">
               {formatDuration(track.trackData.duration_ms)}
@@ -121,7 +121,7 @@ const TrackPage = () => {
             <p className="text-sm text-[#919191]">Tempo (BPM)</p>
           </div>
         </div>
-        <div className="mx-auto mt-8 grid h-72 w-[75%] max-w-[1240px] xs:mt-16">
+        <div className="mx-auto mt-10 grid h-72 w-[90%] max-w-[1240px] xs:mt-16 xs:w-[75%]">
           <BarChart features={track.trackAudioFeatures} />
           <a
             href="https://developer.spotify.com/documentation/web-api/reference/get-audio-features"
