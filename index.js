@@ -13,6 +13,7 @@ const PORT = 3000;
 const stateKey = "spotify_auth_state";
 
 app.use(cors());
+app.use(express.static(path.join(__dirname, "client", "dist")));
 
 app.get("/login", function (req, res) {
   let state = uuidv4();
@@ -114,6 +115,10 @@ app.get("/refresh_token", function (req, res) {
     .catch((error) => {
       res.status(500).send(error);
     });
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
 
 app.listen(PORT, () => {
