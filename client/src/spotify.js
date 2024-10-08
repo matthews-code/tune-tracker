@@ -34,7 +34,7 @@ const refreshToken = async () => {
 
     // Use `/refresh_token` endpoint from our Node app
     const res = await fetch(
-      `http://localhost:3000/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`,
+      `https://spotify-profile-7s0h.onrender.com/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`,
       {
         headers: {
           "Content-Type": "application/json",

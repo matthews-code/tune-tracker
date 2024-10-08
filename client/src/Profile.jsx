@@ -73,7 +73,6 @@ const Profile = () => {
   return (
     <>
       <section className="mx-auto flex w-[75%] max-w-[1240px] flex-col items-center">
-        {/* {!token && <a href="http://localhost:3000/login">login</a>} */}
         <div className="h-[130px] w-[130px]">
           <img
             src={
