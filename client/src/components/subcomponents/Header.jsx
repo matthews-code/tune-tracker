@@ -83,7 +83,10 @@ const Header = () => {
           </NavLink>
         </li>
       </ul>
-      <a href="">
+      <a
+        href="https://github.com/matthews-code/spotify-profile"
+        target="_blank"
+      >
         <IoLogoGithub
           className="mx-auto mb-4 text-[#9b9b9b] duration-100 ease-in-out hover:text-[#509bf5]"
           size={35}

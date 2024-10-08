@@ -70,7 +70,7 @@ const HeaderSmall = () => {
           >
             <div className="flex w-full flex-col items-center gap-1">
               <BsStars size={15} />
-              <p>Playlists</p>
+              <p>Discover</p>
             </div>
           </NavLink>
         </li>
