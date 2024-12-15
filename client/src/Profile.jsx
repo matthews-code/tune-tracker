@@ -76,7 +76,7 @@ const Profile = () => {
         <div className="h-[100px] w-[100px] xs:h-[130px] xs:w-[130px]">
           <img
             src={
-              profile?.images[1].url ||
+              profile?.images[0].url ||
               "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg"
             }
             alt={`Profile Image of ${profile?.display_name}`}
