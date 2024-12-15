@@ -43,6 +43,8 @@ const Profile = () => {
         topTracksResponse.json(),
       ]);
 
+      // console.log(profile, playlists, topArtists, topTracks);
+
       setProfile({ ...profile, playlists });
       setTopArtists(topArtists.items);
       setTopTracks(topTracks.items);
@@ -55,7 +57,7 @@ const Profile = () => {
   }, [token]);
 
   const mapTopArtists = () => {
-    if (topArtists) {
+    if (topArtists && topArtists.length > 0) {
       return topArtists.map((artist) => {
         return <IndivArtist key={artist.id} artist={artist} grid={false} />;
       });
@@ -63,7 +65,7 @@ const Profile = () => {
   };
 
   const mapTopTracks = () => {
-    if (topTracks) {
+    if (topTracks && topTracks.length > 0) {
       return topTracks.map((track) => {
         return <IndivTrack key={track.id} track={track} />;
       });
@@ -76,7 +78,7 @@ const Profile = () => {
         <div className="h-[100px] w-[100px] xs:h-[130px] xs:w-[130px]">
           <img
             src={
-              profile?.images[0].url ||
+              profile?.images[0]?.url ||
               "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg"
             }
             alt={`Profile Image of ${profile?.display_name}`}
@@ -86,7 +88,7 @@ const Profile = () => {
         <a
           href={profile?.external_urls.spotify}
           target="_blank"
-          className="pt-4 text-2xl font-bold duration-100 ease-in-out hover:text-[#1ed760] xs:text-4xl"
+          className="pt-4 text-2xl font-bold duration-100 ease-in-out hover:text-[#385844] xs:text-4xl"
         >
           <h1 className="text-center">
             {profile?.display_name || "Spotify User"}
@@ -127,9 +129,9 @@ const Profile = () => {
           </a>
         )}
       </section>
-      <section className="md:grid-cols-2 mx-auto mt-12 grid w-[90%] max-w-[1240px] grid-cols-1 gap-10 xs:mt-20 xs:w-[75%]">
+      <section className="mx-auto mt-12 grid w-[90%] max-w-[1240px] grid-cols-1 gap-10 xs:mt-20 xs:w-[75%] md:grid-cols-2">
         <div>
-          <div className="sm:flex-row flex flex-col justify-between gap-2">
+          <div className="flex flex-col justify-between gap-2 sm:flex-row">
             <h2 className="text-base font-black xs:text-lg">
               Top Artists of All Time
             </h2>
@@ -143,7 +145,7 @@ const Profile = () => {
           <div className="mt-6 flex flex-col gap-6">{mapTopArtists()}</div>
         </div>
         <div>
-          <div className="sm:flex-row flex flex-col justify-between gap-2">
+          <div className="flex flex-col justify-between gap-2 sm:flex-row">
             <h2 className="text-base font-black xs:text-lg">
               Top Tracks of All Time
             </h2>
