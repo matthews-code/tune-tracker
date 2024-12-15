@@ -84,7 +84,7 @@ const Header = () => {
         </li>
       </ul>
       <a
-        href="https://github.com/matthews-code/spotify-profile"
+        href="https://github.com/matthews-code/tune-tracker"
         target="_blank"
       >
         <IoLogoGithub
