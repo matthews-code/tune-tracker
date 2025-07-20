@@ -52,6 +52,7 @@ const Playlists = () => {
 
       setRecommendations(recommendedData.tracks);
       setLoading(false);
+      setCreatedPlaylist(null);
     };
 
     if (selectedPlaylist) {
@@ -161,7 +162,7 @@ const Playlists = () => {
             </h1>
             {createdPlaylist ? (
               <a
-                className="h-fit min-w-fit rounded-full border border-[#1db954] bg-[#1db954]  px-6 py-2 text-center text-xs font-bold text-white duration-100 ease-in-out hover:border-[#1ed760] hover:bg-[#1ed760]"
+                className="h-fit min-w-fit rounded-full border border-[#1db954] bg-[#1db954] px-6 py-2 text-center text-xs font-bold text-white duration-100 ease-in-out hover:border-[#1ed760] hover:bg-[#1ed760]"
                 href={`https://open.spotify.com/playlist/${createdPlaylist.id}`}
                 target="_blank"
               >
